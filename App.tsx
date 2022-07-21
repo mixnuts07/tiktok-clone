@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import IconAnt from "react-native-vector-icons/AntDesign";
@@ -56,7 +56,22 @@ export default function App() {
           }}
         />
         <BottomTab.Screen
-          name="Post"
+          name=" "
+          component={HomeScreen}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={require("./assets/Images/post.png")}
+                style={[
+                  styles.bottomTabIcon,
+                  focused && styles.bottomTabIconFocused,
+                ]}
+              />
+            ),
+          }}
+        />
+        {/* <BottomTab.Screen
+          name=" "
           component={HomeScreen}
           options={{
             tabBarIcon: ({ focused }) => (
@@ -70,7 +85,7 @@ export default function App() {
               />
             ),
           }}
-        />
+        /> */}
         <BottomTab.Screen
           name="Inbox"
           component={HomeScreen}
