@@ -3,14 +3,15 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import IconAnt from "react-native-vector-icons/AntDesign";
-import IconOct from "react-native-vector-icons/Octicons";
 import IconEnt from "react-native-vector-icons/Entypo";
 import IconIon from "react-native-vector-icons/Ionicons";
+import data from "./assets/videoData";
+import VideoItem from "./components/VideoItem";
 
 const BottomTab = createBottomTabNavigator();
 
 const HomeScreen = () => {
-  return null;
+  return <VideoItem data={data} />;
 };
 
 export default function App() {
@@ -59,33 +60,19 @@ export default function App() {
           name=" "
           component={HomeScreen}
           options={{
+            tabBarLabel: () => null,
             tabBarIcon: ({ focused }) => (
               <Image
                 source={require("./assets/Images/post.png")}
                 style={[
-                  styles.bottomTabIcon,
+                  styles.newVideoBottom,
                   focused && styles.bottomTabIconFocused,
                 ]}
               />
             ),
           }}
         />
-        {/* <BottomTab.Screen
-          name=" "
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <IconOct
-                name="diff-added"
-                size={35}
-                style={[
-                  styles.bottomTabIcon,
-                  focused && styles.bottomTabIconFocused,
-                ]}
-              />
-            ),
-          }}
-        /> */}
+
         <BottomTab.Screen
           name="Inbox"
           component={HomeScreen}
@@ -128,6 +115,10 @@ const styles = StyleSheet.create({
     color: "whitesmoke",
     width: 30,
     height: 30,
+  },
+  newVideoBottom: {
+    width: 50,
+    height: 35,
   },
   bottomTabIconFocused: {},
 });
